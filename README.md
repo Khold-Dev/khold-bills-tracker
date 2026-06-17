@@ -23,8 +23,8 @@
 
 No build step or install is required.
 
-1. Clone or download this repo.
-2. Open `index.html` in a browser.
+1. Clone or download the repo and Open `index.html` in a browser.
+2. OR visit https://khold-dev.github.io/khold-bills-tracker/
 3. Edit the month, bills, income, and one-time items directly on the page.
 
 Your changes are saved in your browser automatically.
