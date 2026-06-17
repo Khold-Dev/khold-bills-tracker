@@ -6,38 +6,42 @@
   <title>Bills</title>
   <style>
     :root {
-      --bg: #0f1117;
-      --panel: #171b27;
-      --panel-2: #1e2130;
-      --panel-3: #2a2f45;
-      --line: #313955;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --strong: #f8fafc;
-      --accent: #60a5fa;
-      --good: #4ade80;
-      --warn: #fb923c;
-      --bad: #f87171;
-      --teal: #2dd4bf;
-      --violet: #a78bfa;
-      --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+      --bg: #0b0b0f;
+      --panel: #111118;
+      --panel-2: #151522;
+      --panel-3: #1e1e31;
+      --line: #2a2a3e;
+      --text: #e8ecf4;
+      --muted: #9aa3b5;
+      --strong: #ffffff;
+      --accent: #6366f1;
+      --accent-2: #5cb1d6;
+      --good: #59c059;
+      --warn: #ff8c00;
+      --bad: #ff6680;
+      --amber: #ffb347;
+      --violet: #9966ff;
+      --radius: 8px;
+      --shadow: 0 18px 54px rgba(0, 0, 0, 0.38);
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(96, 165, 250, 0.12), transparent 28%),
-        radial-gradient(circle at top right, rgba(45, 212, 191, 0.10), transparent 24%),
+        radial-gradient(ellipse at 10% 0%, rgba(255, 140, 0, 0.13), transparent 42%),
+        radial-gradient(ellipse at 88% 5%, rgba(92, 177, 214, 0.11), transparent 38%),
+        linear-gradient(135deg, rgba(18, 13, 8, 0.65), rgba(30, 16, 53, 0.45) 42%, rgba(15, 23, 42, 0.3)),
         var(--bg);
       color: var(--text);
-      padding: 24px;
+      padding: 18px;
     }
 
     .app {
-      max-width: 1180px;
+      max-width: 1260px;
       margin: 0 auto;
     }
 
@@ -45,15 +49,37 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 20px;
+      gap: 14px;
+      min-height: 72px;
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      background: linear-gradient(135deg, #120d08 0%, #1e1035 45%, #0f172a 100%);
+      border: 1px solid rgba(255, 179, 71, 0.22);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       flex-wrap: wrap;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 260px;
+    }
+
+    .brand-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(92, 177, 214, 0.45);
+      background: #050507;
+      object-fit: cover;
     }
 
     .header-copy {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 5px;
     }
 
     h1 {
@@ -62,21 +88,20 @@
     }
 
     .month-input {
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--strong);
-      letter-spacing: 0.03em;
       background: transparent;
       border: none;
       font-family: inherit;
-      width: 260px;
+      width: min(46vw, 290px);
       padding: 0;
     }
 
     .subtitle {
       margin: 0;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.88rem;
     }
 
     .header-actions {
@@ -88,78 +113,92 @@
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 14px;
-      margin-bottom: 22px;
+      grid-template-columns: repeat(6, minmax(145px, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
     }
 
     .stat-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)), var(--panel);
-      border: 1px solid rgba(148, 163, 184, 0.14);
-      border-radius: 16px;
-      padding: 16px;
-      box-shadow: var(--shadow);
+      background: rgba(17, 17, 24, 0.94);
+      border: 1px solid rgba(99, 102, 241, 0.18);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      min-height: 74px;
     }
 
     .stat-label {
       color: var(--muted);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.76rem;
-      margin-bottom: 8px;
+      letter-spacing: 0.06em;
+      font-size: 0.68rem;
+      margin-bottom: 6px;
       font-weight: 600;
     }
 
     .stat-value {
-      font-size: 1.65rem;
+      font-size: 1.36rem;
       font-weight: 700;
       color: var(--strong);
     }
 
-    .layout {
+    .workspace {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 22px;
+      grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.75fr);
+      gap: 12px;
       align-items: start;
     }
 
     .panel {
-      background: rgba(23, 27, 39, 0.92);
-      border: 1px solid rgba(148, 163, 184, 0.14);
-      border-radius: 18px;
-      padding: 18px;
+      background: rgba(17, 17, 24, 0.94);
+      border: 1px solid rgba(99, 102, 241, 0.18);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
+    }
+
+    .panel-primary {
+      grid-row: span 2;
+    }
+
+    .panel-wide {
+      grid-column: 1 / -1;
     }
 
     .panel-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 14px;
+      gap: 12px;
+      padding: 11px 12px;
+      background: linear-gradient(90deg, rgba(99, 102, 241, 0.16), rgba(255, 179, 71, 0.1));
+      border-bottom: 1px solid #252539;
       flex-wrap: wrap;
     }
 
     .panel-title-wrap h2 {
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin: 0 0 6px;
+      letter-spacing: 0.08em;
+      color: #ffdca8;
+      margin: 0 0 4px;
     }
 
     .panel-title-wrap p {
       margin: 0;
-      font-size: 0.92rem;
-      color: #cbd5e1;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      padding: 10px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      border-radius: 14px;
+      border-radius: var(--radius);
       overflow: hidden;
       background: var(--panel-2);
     }
@@ -167,13 +206,13 @@
     thead tr { background: var(--panel-3); }
 
     thead th {
-      padding: 12px 14px;
+      padding: 9px 10px;
       text-align: left;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       color: var(--muted);
-      font-size: 0.77rem;
+      font-size: 0.7rem;
     }
 
     tbody tr {
@@ -181,16 +220,22 @@
       transition: background 0.15s ease;
     }
 
-    tbody tr:hover { background: #1a2340; }
-    td { padding: 12px 14px; font-size: 1rem; vertical-align: middle; }
-    tfoot tr { border-top: 2px solid #3b4263; }
+    tbody tr:hover { background: #1e1e31; }
+
+    td {
+      padding: 9px 10px;
+      font-size: 0.92rem;
+      vertical-align: middle;
+    }
+
+    tfoot tr { border-top: 1px solid #36304a; }
 
     tfoot td {
-      padding: 12px 14px;
-      font-size: 0.98rem;
+      padding: 10px;
+      font-size: 0.9rem;
       font-weight: 700;
       color: var(--strong);
-      background: #1a1f35;
+      background: #101018;
     }
 
     .table-tools {
@@ -206,13 +251,13 @@
     .btn-edit,
     .btn-reset,
     .btn-secondary {
-      border: none;
-      border-radius: 10px;
-      padding: 8px 12px;
-      font-size: 0.92rem;
+      border: 1px solid #36304a;
+      border-radius: var(--radius);
+      padding: 7px 10px;
+      font-size: 0.84rem;
       font-family: inherit;
       cursor: pointer;
-      transition: background 0.15s ease, transform 0.15s ease;
+      transition: transform 0.15s ease, filter 0.15s ease, border-color 0.15s ease;
     }
 
     .btn:hover,
@@ -223,51 +268,46 @@
     .btn-reset:hover,
     .btn-secondary:hover {
       transform: translateY(-1px);
+      filter: brightness(1.08);
     }
 
     .btn-add,
     .btn-confirm {
-      background: #1a2e1a;
-      color: var(--good);
+      background: #13261b;
+      border-color: rgba(89, 192, 89, 0.42);
+      color: #a8efb1;
     }
-
-    .btn-add:hover,
-    .btn-confirm:hover { background: #22402a; }
 
     .btn-remove,
     .btn-reset {
-      background: #3b1f1f;
-      color: var(--bad);
+      background: #33151d;
+      border-color: rgba(255, 102, 128, 0.42);
+      color: #ffbdc9;
     }
-
-    .btn-remove:hover,
-    .btn-reset:hover { background: #4f2222; }
 
     .btn-edit {
-      background: #1b2c47;
-      color: var(--accent);
+      background: #242036;
+      border-color: #36304a;
+      color: #d9ddff;
     }
-
-    .btn-edit:hover { background: #233a5d; }
 
     .btn-secondary {
-      background: #22283b;
-      color: #d7e1f0;
+      background: #242036;
+      color: var(--text);
     }
 
-    .btn-secondary:hover { background: #2c3550; }
-
     .icon-btn {
-      padding: 4px 10px;
+      padding: 5px 8px;
       line-height: 1.15;
-      font-size: 0.92rem;
+      font-size: 0.8rem;
     }
 
     .due-10, .due-25, .due-1st, .due-1time, .due-past, .due-paid {
-      font-size: 0.95rem;
-      padding: 4px 10px;
+      font-size: 0.78rem;
+      padding: 4px 8px;
       border-radius: 99px;
       display: inline-block;
+      font-weight: 700;
     }
 
     .due-badge {
@@ -276,11 +316,11 @@
       user-select: none;
     }
 
-    .due-1st  { background: #0f3535; color: var(--teal); }
-    .due-10   { background: #1e3a5f; color: var(--accent); }
-    .due-25   { background: #2d1f4e; color: var(--violet); }
-    .due-1time{ background: #1a2e1a; color: var(--good); }
-    .due-past { background: #3b1f1f; color: var(--bad); }
+    .due-1st  { background: rgba(92, 177, 214, 0.18); color: #90d8f0; border: 1px solid rgba(92, 177, 214, 0.42); }
+    .due-10   { background: rgba(99, 102, 241, 0.18); color: #c2c7ff; border: 1px solid rgba(99, 102, 241, 0.44); }
+    .due-25   { background: rgba(153, 102, 255, 0.18); color: #c8a0ff; border: 1px solid rgba(153, 102, 255, 0.44); }
+    .due-1time{ background: rgba(89, 192, 89, 0.16); color: #a8efb1; border: 1px solid rgba(89, 192, 89, 0.38); }
+    .due-past { background: rgba(255, 102, 128, 0.16); color: #ffbdc9; border: 1px solid rgba(255, 102, 128, 0.4); }
     .due-paid { color: #64748b; text-decoration: line-through; background: transparent; }
 
     tr.paid td span { color: #64748b !important; text-decoration: line-through; }
@@ -293,12 +333,13 @@
     .money { white-space: nowrap; }
 
     .table-note {
-      margin-top: 10px;
+      margin: 0;
+      padding: 0 10px 10px;
       color: var(--muted);
-      font-size: 0.84rem;
+      font-size: 0.76rem;
     }
 
-    .controls-cell { width: 132px; }
+    .controls-cell { width: 112px; }
 
     .action-group {
       display: flex;
@@ -310,22 +351,23 @@
     input[type="number"],
     input.amount-input,
     select.due-select {
-      background: #101522;
-      border: 1px solid #334155;
+      background: #0c0c13;
+      border: 1px solid #2a2a3e;
       color: var(--text);
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       font-family: inherit;
       width: 100%;
-      padding: 8px 10px;
-      border-radius: 8px;
+      padding: 7px 8px;
+      border-radius: var(--radius);
     }
 
     .item-input { min-width: 140px; }
     .amount-input { min-width: 110px; }
 
     input:focus, select:focus {
-      outline: 1px solid #47638f;
-      border-color: #47638f;
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.16);
     }
 
     .inline-amount {
@@ -355,7 +397,8 @@
 
     .balance-lines {
       display: grid;
-      gap: 12px;
+      gap: 8px;
+      padding: 10px;
     }
 
     .balance-line {
@@ -364,17 +407,21 @@
       justify-content: space-between;
       gap: 14px;
       color: var(--muted);
+      padding: 10px;
+      background: #151522;
+      border: 1px solid #25253a;
+      border-radius: var(--radius);
     }
 
     .balance-line strong {
       color: var(--strong);
-      font-size: 1.15rem;
+      font-size: 1rem;
       white-space: nowrap;
     }
 
     .balance-result {
-      border-top: 1px solid var(--line);
-      padding-top: 12px;
+      border-color: rgba(255, 179, 71, 0.38);
+      background: #201a15;
     }
 
     .color-pick {
@@ -384,10 +431,10 @@
     }
 
     .color-pick button {
-      border: none;
+      border: 1px solid transparent;
       border-radius: 6px;
-      padding: 4px 8px;
-      font-size: 0.72rem;
+      padding: 4px 7px;
+      font-size: 0.68rem;
       cursor: pointer;
       opacity: 0.45;
       transition: opacity 0.15s ease;
@@ -401,41 +448,60 @@
     .empty-state {
       text-align: center;
       color: var(--muted);
-      padding: 18px;
-      border: 1px dashed #334155;
-      border-radius: 12px;
+      padding: 14px;
+      border: 1px dashed #303044;
+      border-radius: var(--radius);
       background: rgba(255,255,255,0.02);
       display: none;
-      margin-top: 12px;
+      margin: 10px;
+      font-size: 0.86rem;
     }
 
-    @media (max-width: 980px) {
-      .stats-grid,
-      .layout {
-        grid-template-columns: 1fr 1fr;
+    @media (max-width: 1080px) {
+      .stats-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-primary,
+      .panel-wide {
+        grid-column: auto;
+        grid-row: auto;
       }
     }
 
     @media (max-width: 760px) {
-      body { padding: 16px; }
-      .stats-grid,
-      .layout { grid-template-columns: 1fr; }
-      .month-input { width: 100%; font-size: 1.75rem; }
+      body { padding: 10px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .brand-row { min-width: 100%; }
+      .month-input { width: 100%; font-size: 1.3rem; }
       .page-header,
       .panel-header { align-items: flex-start; }
-      table { display: block; overflow-x: auto; }
+      .header-actions { width: 100%; }
+      .header-actions button { flex: 1; }
       .controls-cell { width: 150px; }
+    }
+
+    @media (max-width: 520px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .brand-icon { width: 42px; height: 42px; }
     }
   </style>
 </head>
 <body>
   <div class="app">
     <div class="page-header">
-      <div class="header-copy">
-        <h1>
-          <input id="month-input" class="month-input" type="text" value="Month Year" oninput="saveState()" aria-label="Month">
-        </h1>
-        <p class="subtitle">Track recurring bills, one-time expenses, paid items, and your remaining monthly balance.</p>
+      <div class="brand-row">
+        <img class="brand-icon" src="./kholdicon.png" alt="" aria-hidden="true">
+        <div class="header-copy">
+          <h1>
+            <input id="month-input" class="month-input" type="text" value="Month Year" oninput="saveState()" aria-label="Month">
+          </h1>
+          <p class="subtitle">Monthly bills, income, one-time costs, and leftover cash.</p>
+        </div>
       </div>
       <div class="header-actions">
         <button type="button" class="btn btn-secondary" onclick="window.print()">Print</button>
@@ -445,131 +511,66 @@
 
     <section class="stats-grid" aria-label="Bills summary">
       <div class="stat-card">
-        <div class="stat-label">Recurring Total</div>
-        <div class="stat-value" id="stat-recurring-total">$0.00</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Recurring Paid</div>
-        <div class="stat-value" id="stat-recurring-paid">$0.00</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Recurring Remaining</div>
-        <div class="stat-value" id="stat-recurring-remaining">$0.00</div>
+        <div class="stat-label">Left Over</div>
+        <div class="stat-value" id="stat-leftover">$0.00</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Income Total</div>
         <div class="stat-value" id="stat-income-total">$0.00</div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">Left Over</div>
-        <div class="stat-value" id="stat-leftover">$0.00</div>
+        <div class="stat-label">Recurring Remaining</div>
+        <div class="stat-value" id="stat-recurring-remaining">$0.00</div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">Grand Monthly Total</div>
+        <div class="stat-label">Recurring Paid</div>
+        <div class="stat-value" id="stat-recurring-paid">$0.00</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Recurring Total</div>
+        <div class="stat-value" id="stat-recurring-total">$0.00</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Monthly Total</div>
         <div class="stat-value" id="stat-grand-total">$0.00</div>
       </div>
     </section>
 
-    <div class="layout">
-      <section class="panel">
+    <div class="workspace">
+      <section class="panel panel-primary">
         <div class="panel-header">
           <div class="panel-title-wrap">
             <h2>Recurring Bills</h2>
-            <p>Edit, add, remove, and mark monthly bills as due, past due, or paid.</p>
+            <p>Click a due badge to cycle due, past due, and paid.</p>
           </div>
           <div class="table-tools">
-            <button type="button" class="btn-add" onclick="addRecurringRow()">+ Add Recurring Bill</button>
+            <button type="button" class="btn-add" onclick="addRecurringRow()">+ Bill</button>
           </div>
         </div>
 
-        <table id="bills-table">
-          <thead>
-            <tr>
-              <th>Due</th>
-              <th>Bill</th>
-              <th>Amount</th>
-              <th class="controls-cell">Actions</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-          <tfoot>
-            <tr>
-              <td>Total</td>
-              <td>Remaining</td>
-              <td id="bills-remaining">$0.00</td>
-              <td></td>
-            </tr>
-          </tfoot>
-        </table>
+        <div class="table-wrap">
+          <table id="bills-table">
+            <thead>
+              <tr>
+                <th>Due</th>
+                <th>Bill</th>
+                <th>Amount</th>
+                <th class="controls-cell">Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+              <tr>
+                <td>Total</td>
+                <td>Remaining</td>
+                <td id="bills-remaining">$0.00</td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
         <div id="bills-empty" class="empty-state">No recurring bills yet. Use <strong>+ Add Recurring Bill</strong> to start.</div>
-        <div class="table-note">Tip: click a due badge to cycle between original, past due, and paid.</div>
-      </section>
-
-      <section class="panel">
-        <div class="panel-header">
-          <div class="panel-title-wrap">
-            <h2>Income</h2>
-            <p>Track hourly pay, other income, and the pay date for each line.</p>
-          </div>
-          <div class="table-tools">
-            <button type="button" class="btn-add" onclick="addIncomeRow()">+ Add Income</button>
-          </div>
-        </div>
-
-        <table id="income-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Income</th>
-              <th>Amount</th>
-              <th class="controls-cell">Actions</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-          <tfoot>
-            <tr>
-              <td>Total</td>
-              <td></td>
-              <td id="income-total">$0.00</td>
-              <td></td>
-            </tr>
-          </tfoot>
-        </table>
-        <div id="income-empty" class="empty-state">No income yet. Add one when money comes in.</div>
-        <div class="table-note">Tip: click an income date badge to cycle between 1st, 10th, and 25th.</div>
-      </section>
-
-      <section class="panel">
-        <div class="panel-header">
-          <div class="panel-title-wrap">
-            <h2>One-Time &amp; Irregular</h2>
-            <p>Keep track of extra costs for the month and color-code them by size.</p>
-          </div>
-          <div class="table-tools">
-            <button type="button" class="btn-add" onclick="addOnetimeRow()">+ Add One-Time Item</button>
-          </div>
-        </div>
-
-        <table id="onetime-table">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Amount</th>
-              <th>Type</th>
-              <th class="controls-cell">Actions</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-          <tfoot>
-            <tr>
-              <td>Total</td>
-              <td id="onetime-total">$0.00</td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tfoot>
-        </table>
-        <div id="onetime-empty" class="empty-state">No one-time items yet. Add one when something extra comes up.</div>
+        <div class="table-note">Due badge cycle: original, past due, paid.</div>
       </section>
 
       <section class="panel">
@@ -594,6 +595,77 @@
           </div>
         </div>
       </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div class="panel-title-wrap">
+            <h2>Income</h2>
+            <p>Hourly estimates and fixed income lines.</p>
+          </div>
+          <div class="table-tools">
+            <button type="button" class="btn-add" onclick="addIncomeRow()">+ Income</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table id="income-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Income</th>
+                <th>Amount</th>
+                <th class="controls-cell">Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+              <tr>
+                <td>Total</td>
+                <td></td>
+                <td id="income-total">$0.00</td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="income-empty" class="empty-state">No income yet. Add one when money comes in.</div>
+        <div class="table-note">Date badge cycle: 1st, 10th, 25th.</div>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="panel-header">
+          <div class="panel-title-wrap">
+            <h2>One-Time &amp; Irregular</h2>
+            <p>Extra costs for the month, color-coded by size.</p>
+          </div>
+          <div class="table-tools">
+            <button type="button" class="btn-add" onclick="addOnetimeRow()">+ Item</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table id="onetime-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th class="controls-cell">Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+              <tr>
+                <td>Total</td>
+                <td id="onetime-total">$0.00</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div id="onetime-empty" class="empty-state">No one-time items yet. Add one when something extra comes up.</div>
+      </section>
     </div>
   </div>
 
@@ -613,6 +685,16 @@
       { due: '1st', name: 'Example Hourly Pay', type: 'hourly', hours: 0, wage: 0 },
       { due: '10th', name: 'Example Income', type: 'fixed', amount: 0 }
     ];
+
+    const els = {
+      month: document.getElementById('month-input'),
+      billsTable: document.querySelector('#bills-table tbody'),
+      incomeTable: document.querySelector('#income-table tbody'),
+      onetimeTable: document.querySelector('#onetime-table tbody'),
+      billsEmpty: document.getElementById('bills-empty'),
+      incomeEmpty: document.getElementById('income-empty'),
+      onetimeEmpty: document.getElementById('onetime-empty')
+    };
 
     function storageKey(name) {
       return `${STORAGE_PREFIX}-${name}`;
@@ -683,7 +765,7 @@
         <td class="controls-cell">
           <div class="action-group">
             <button type="button" class="btn-edit icon-btn" onclick="editRecurringRow(this)">Edit</button>
-            <button type="button" class="btn-remove icon-btn" onclick="removeRecurringRow(this)">−</button>
+            <button type="button" class="btn-remove icon-btn" onclick="removeRecurringRow(this)">&minus;</button>
           </div>
         </td>
       `;
@@ -702,7 +784,7 @@
         <td><input type="text" class="amount-input" placeholder="$0.00" value="${data.amount ? formatCurrency(data.amount) : ''}"></td>
         <td class="controls-cell">
           <div class="action-group">
-            <button type="button" class="btn-confirm icon-btn" onclick="confirmRecurringRow(this)">✓</button>
+            <button type="button" class="btn-confirm icon-btn" onclick="confirmRecurringRow(this)">&#10003;</button>
             <button type="button" class="btn-secondary icon-btn" onclick="cancelRecurringEdit(this)">Cancel</button>
           </div>
         </td>
@@ -717,7 +799,7 @@
         <td class="controls-cell">
           <div class="action-group">
             <button type="button" class="btn-edit icon-btn" onclick="editOnetimeRow(this)">Edit</button>
-            <button type="button" class="btn-remove icon-btn" onclick="removeOnetimeRow(this)">−</button>
+            <button type="button" class="btn-remove icon-btn" onclick="removeOnetimeRow(this)">&minus;</button>
           </div>
         </td>
       `;
@@ -736,7 +818,7 @@
         <td><span class="due-1time">One-time</span></td>
         <td class="controls-cell">
           <div class="action-group">
-            <button type="button" class="btn-confirm icon-btn" onclick="confirmOnetimeRow(this)">✓</button>
+            <button type="button" class="btn-confirm icon-btn" onclick="confirmOnetimeRow(this)">&#10003;</button>
             <button type="button" class="btn-secondary icon-btn" onclick="cancelOnetimeEdit(this)">Cancel</button>
           </div>
         </td>
@@ -761,7 +843,7 @@
         </td>
         <td class="controls-cell">
           <div class="action-group">
-            <button type="button" class="btn-remove icon-btn" onclick="removeIncomeRow(this)">−</button>
+            <button type="button" class="btn-remove icon-btn" onclick="removeIncomeRow(this)">&minus;</button>
           </div>
         </td>
       `;
@@ -778,7 +860,7 @@
         <td class="controls-cell">
           <div class="action-group">
             <button type="button" class="btn-edit icon-btn" onclick="editIncomeRow(this)">Edit</button>
-            <button type="button" class="btn-remove icon-btn" onclick="removeIncomeRow(this)">−</button>
+            <button type="button" class="btn-remove icon-btn" onclick="removeIncomeRow(this)">&minus;</button>
           </div>
         </td>
       `;
@@ -797,7 +879,7 @@
         <td><input type="text" class="amount-input" placeholder="$0.00" value="${data.amount ? formatCurrency(data.amount) : ''}"></td>
         <td class="controls-cell">
           <div class="action-group">
-            <button type="button" class="btn-confirm icon-btn" onclick="confirmIncomeRow(this)">✓</button>
+            <button type="button" class="btn-confirm icon-btn" onclick="confirmIncomeRow(this)">&#10003;</button>
             <button type="button" class="btn-secondary icon-btn" onclick="cancelIncomeEdit(this)">Cancel</button>
           </div>
         </td>
@@ -848,7 +930,6 @@
     }
 
     function createRecurringDisplayRow(data, isDynamic = false) {
-      const tbody = document.querySelector('#bills-table tbody');
       const row = document.createElement('tr');
       row.dataset.amount = String(Number(data.amount) || 0);
       row.dataset.due = dueToData(data.due);
@@ -856,20 +937,19 @@
       row.dataset.state = data.state || 'orig';
       if (isDynamic) row.dataset.dynamic = '1';
       row.innerHTML = recurringDisplayRowMarkup(data);
-      tbody.appendChild(row);
+      els.billsTable.appendChild(row);
       attachRecurringBadgeHandler(row);
       applyBadgeState(row, data.state || 'orig');
       return row;
     }
 
     function createOnetimeDisplayRow(data, isDynamic = false) {
-      const tbody = document.querySelector('#onetime-table tbody');
       const row = document.createElement('tr');
       row.dataset.amount = String(Number(data.amount) || 0);
       row.dataset.color = data.color || 'mid';
       if (isDynamic) row.dataset.dynamic = '1';
       row.innerHTML = onetimeDisplayRowMarkup(data);
-      tbody.appendChild(row);
+      els.onetimeTable.appendChild(row);
       return row;
     }
 
@@ -889,7 +969,6 @@
     }
 
     function createIncomeDisplayRow(data, isDynamic = false) {
-      const tbody = document.querySelector('#income-table tbody');
       const row = document.createElement('tr');
       const type = data.type === 'hourly' ? 'hourly' : 'fixed';
       const amount = type === 'hourly' ? calculateHourlyIncome(data.hours, data.wage) : Number(data.amount) || 0;
@@ -902,7 +981,7 @@
       row.dataset.wage = String(Number(data.wage) || 0);
       if (isDynamic) row.dataset.dynamic = '1';
       row.innerHTML = incomeDisplayRowMarkup({ ...data, type, amount });
-      tbody.appendChild(row);
+      els.incomeTable.appendChild(row);
       attachIncomeDateHandler(row);
       return row;
     }
@@ -919,7 +998,6 @@
     }
 
     function addRecurringRow() {
-      const tbody = document.querySelector('#bills-table tbody');
       const row = document.createElement('tr');
       row.dataset.amount = '0';
       row.dataset.due = '1st';
@@ -928,7 +1006,7 @@
       row.dataset.dynamic = '1';
       row.dataset.editing = '1';
       row.innerHTML = recurringEditRowMarkup({ due: '1st', bill: '', amount: 0 });
-      tbody.appendChild(row);
+      els.billsTable.appendChild(row);
       row.querySelector('.item-input').focus();
       toggleEmptyStates();
       saveState();
@@ -993,17 +1071,16 @@
     }
 
     function addOnetimeRow(item = '', amount = '', colorCls = 'mid') {
-      const tbody = document.querySelector('#onetime-table tbody');
       const row = document.createElement('tr');
       row.dataset.amount = String(parseAmount(amount));
       row.dataset.color = colorCls;
       row.dataset.dynamic = '1';
       row.dataset.editing = '1';
       row.innerHTML = onetimeEditRowMarkup({ item, amount: parseAmount(amount), color: colorCls });
-      tbody.appendChild(row);
+      els.onetimeTable.appendChild(row);
       if (!item) row.querySelector('.item-input').focus();
       toggleEmptyStates();
-      updateOnetimeTotal();
+      refreshAllTotals();
       saveState();
       return row;
     }
@@ -1032,7 +1109,7 @@
       delete row.dataset.editing;
       delete row.dataset.snapshot;
       row.innerHTML = onetimeDisplayRowMarkup({ item, amount, color });
-      updateOnetimeTotal();
+      refreshAllTotals();
       saveState();
     }
 
@@ -1048,18 +1125,17 @@
       } else {
         row.remove();
       }
-      updateOnetimeTotal();
+      refreshAllTotals();
       saveState();
     }
 
     function removeOnetimeRow(btn) {
       btn.closest('tr').remove();
-      updateOnetimeTotal();
+      refreshAllTotals();
       saveState();
     }
 
     function addIncomeRow(name = '', amount = '', due = '1st') {
-      const tbody = document.querySelector('#income-table tbody');
       const row = document.createElement('tr');
       row.dataset.type = 'fixed';
       row.dataset.amount = String(parseAmount(amount));
@@ -1068,10 +1144,10 @@
       row.dataset.dynamic = '1';
       row.dataset.editing = '1';
       row.innerHTML = incomeEditRowMarkup({ due, name, amount: parseAmount(amount) });
-      tbody.appendChild(row);
+      els.incomeTable.appendChild(row);
       if (!name) row.querySelector('.item-input').focus();
       toggleEmptyStates();
-      updateIncomeTotal();
+      refreshAllTotals();
       saveState();
       return row;
     }
@@ -1103,7 +1179,7 @@
       delete row.dataset.snapshot;
       row.innerHTML = incomeDisplayRowMarkup({ due, name, amount, type: 'fixed' });
       attachIncomeDateHandler(row);
-      updateIncomeTotal();
+      refreshAllTotals();
       saveState();
     }
 
@@ -1122,13 +1198,13 @@
       } else {
         row.remove();
       }
-      updateIncomeTotal();
+      refreshAllTotals();
       saveState();
     }
 
     function removeIncomeRow(btn) {
       btn.closest('tr').remove();
-      updateIncomeTotal();
+      refreshAllTotals();
       saveState();
     }
 
@@ -1141,7 +1217,7 @@
       row.dataset.wage = String(wage);
       row.dataset.amount = String(amount);
       row.querySelector('.income-row-total').textContent = formatCurrency(amount);
-      updateIncomeTotal();
+      refreshAllTotals();
       saveState();
     }
 
@@ -1155,7 +1231,7 @@
     function syncRowAmount(input) {
       const row = input.closest('tr');
       row.dataset.amount = String(parseAmount(input.value));
-      updateOnetimeTotal();
+      refreshAllTotals();
       saveState();
     }
 
@@ -1248,79 +1324,64 @@
       return rows;
     }
 
-    function updateBillsRemaining() {
-      let recurringTotal = 0;
-      let recurringPaid = 0;
-      let recurringRemaining = 0;
-
-      document.querySelectorAll('#bills-table tbody tr').forEach(row => {
-        const amount = parseAmount(row.dataset.amount);
-        recurringTotal += amount;
-        if (row.dataset.state === 'paid') {
-          recurringPaid += amount;
-        } else {
-          recurringRemaining += amount;
-        }
-      });
-
-      document.getElementById('bills-remaining').textContent = formatCurrency(recurringRemaining);
-      document.getElementById('stat-recurring-total').textContent = formatCurrency(recurringTotal);
-      document.getElementById('stat-recurring-paid').textContent = formatCurrency(recurringPaid);
-      document.getElementById('stat-recurring-remaining').textContent = formatCurrency(recurringRemaining);
-      updateLeftOver();
+    function sumRows(rows) {
+      return rows.reduce((sum, row) => sum + (Number(row.amount) || 0), 0);
     }
 
-    function updateOnetimeTotal() {
-      let total = 0;
-      document.querySelectorAll('#onetime-table tbody tr').forEach(row => {
-        total += parseAmount(row.dataset.amount);
-      });
-      document.getElementById('onetime-total').textContent = formatCurrency(total);
-      updateGrandTotal();
+    function getTotals() {
+      const recurringRows = getRecurringRowsData();
+      const onetimeRows = getOnetimeRowsData();
+      const incomeRows = getIncomeRowsData();
+      const recurringTotal = sumRows(recurringRows);
+      const recurringPaid = sumRows(recurringRows.filter(row => row.state === 'paid'));
+      const onetimeTotal = sumRows(onetimeRows);
+      const incomeTotal = sumRows(incomeRows);
+
+      return {
+        recurringTotal,
+        recurringPaid,
+        recurringRemaining: recurringTotal - recurringPaid,
+        onetimeTotal,
+        incomeTotal,
+        grandTotal: recurringTotal + onetimeTotal,
+        leftOver: incomeTotal - recurringTotal
+      };
+    }
+
+    function setMoney(id, amount) {
+      document.getElementById(id).textContent = formatCurrency(amount);
+    }
+
+    function updateTotals() {
+      const totals = getTotals();
+
+      setMoney('bills-remaining', totals.recurringRemaining);
+      setMoney('income-total', totals.incomeTotal);
+      setMoney('onetime-total', totals.onetimeTotal);
+      setMoney('stat-recurring-total', totals.recurringTotal);
+      setMoney('stat-recurring-paid', totals.recurringPaid);
+      setMoney('stat-recurring-remaining', totals.recurringRemaining);
+      setMoney('stat-income-total', totals.incomeTotal);
+      setMoney('stat-grand-total', totals.grandTotal);
+      setMoney('stat-leftover', totals.leftOver);
+      setMoney('balance-income', totals.incomeTotal);
+      setMoney('balance-recurring', totals.recurringTotal);
+      setMoney('balance-leftover', totals.leftOver);
       toggleEmptyStates();
-    }
-
-    function updateGrandTotal() {
-      const recurringTotal = getRecurringRowsData().reduce((sum, row) => sum + (Number(row.amount) || 0), 0);
-      const onetimeTotal = getOnetimeRowsData().reduce((sum, row) => sum + (Number(row.amount) || 0), 0);
-      document.getElementById('stat-grand-total').textContent = formatCurrency(recurringTotal + onetimeTotal);
-    }
-
-    function updateIncomeTotal() {
-      const incomeTotal = getIncomeRowsData().reduce((sum, row) => sum + (Number(row.amount) || 0), 0);
-      document.getElementById('income-total').textContent = formatCurrency(incomeTotal);
-      document.getElementById('stat-income-total').textContent = formatCurrency(incomeTotal);
-      updateLeftOver();
-      toggleEmptyStates();
-    }
-
-    function updateLeftOver() {
-      const incomeTotal = getIncomeRowsData().reduce((sum, row) => sum + (Number(row.amount) || 0), 0);
-      const recurringTotal = getRecurringRowsData().reduce((sum, row) => sum + (Number(row.amount) || 0), 0);
-      const leftOver = incomeTotal - recurringTotal;
-
-      document.getElementById('stat-leftover').textContent = formatCurrency(leftOver);
-      document.getElementById('balance-income').textContent = formatCurrency(incomeTotal);
-      document.getElementById('balance-recurring').textContent = formatCurrency(recurringTotal);
-      document.getElementById('balance-leftover').textContent = formatCurrency(leftOver);
     }
 
     function toggleEmptyStates() {
-      document.getElementById('bills-empty').style.display = document.querySelector('#bills-table tbody').rows.length ? 'none' : 'block';
-      document.getElementById('income-empty').style.display = document.querySelector('#income-table tbody').rows.length ? 'none' : 'block';
-      document.getElementById('onetime-empty').style.display = document.querySelector('#onetime-table tbody').rows.length ? 'none' : 'block';
+      els.billsEmpty.style.display = els.billsTable.rows.length ? 'none' : 'block';
+      els.incomeEmpty.style.display = els.incomeTable.rows.length ? 'none' : 'block';
+      els.onetimeEmpty.style.display = els.onetimeTable.rows.length ? 'none' : 'block';
     }
 
     function refreshAllTotals() {
-      updateBillsRemaining();
-      updateIncomeTotal();
-      updateOnetimeTotal();
-      updateGrandTotal();
-      toggleEmptyStates();
+      updateTotals();
     }
 
     function saveState() {
-      const monthValue = document.getElementById('month-input').value;
+      const monthValue = els.month.value;
       const recurringRows = getRecurringRowsData();
       const onetimeRows = getOnetimeRowsData();
       const incomeRows = getIncomeRowsData();
@@ -1349,15 +1410,15 @@
       }
 
       const savedMonth = localStorage.getItem(storageKey('month'));
-      if (savedMonth) document.getElementById('month-input').value = savedMonth;
+      if (savedMonth) els.month.value = savedMonth;
 
       const recurringRows = JSON.parse(localStorage.getItem(storageKey('recurring')) || 'null') || defaultRecurringBills;
       const onetimeRows = JSON.parse(localStorage.getItem(storageKey('onetime')) || 'null') || defaultOnetimeBills;
       const incomeRows = JSON.parse(localStorage.getItem(storageKey('income')) || 'null') || defaultIncomeRows;
 
-      document.querySelector('#bills-table tbody').innerHTML = '';
-      document.querySelector('#income-table tbody').innerHTML = '';
-      document.querySelector('#onetime-table tbody').innerHTML = '';
+      els.billsTable.innerHTML = '';
+      els.incomeTable.innerHTML = '';
+      els.onetimeTable.innerHTML = '';
 
       recurringRows.forEach((row, index) => createRecurringDisplayRow(row, index >= defaultRecurringBills.length || row.dynamic));
       incomeRows.forEach((row, index) => createIncomeDisplayRow(row, index >= defaultIncomeRows.length || row.dynamic));
